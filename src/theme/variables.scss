@@ -1,0 +1,100 @@
+// Ionic Variables and Theming. For more info, please see:
+// http://ionicframework.com/docs/v2/theming/
+$font-path: "../assets/fonts";
+
+@import "ionic.globals";
+
+
+// Shared Variables
+// --------------------------------------------------
+// To customize the look and feel of this app, you can override
+// the Sass variables found in Ionic's source scss files.
+// To view all the possible Ionic variables, see:
+// http://ionicframework.com/docs/v2/theming/overriding-ionic-variables/
+
+
+
+
+// Named Color Variables
+// --------------------------------------------------
+// Named colors makes it easy to reuse colors on various components.
+// It's highly recommended to change the default colors
+// to match your app's branding. Ionic uses a Sass map of
+// colors so you can add, rename and remove colors as needed.
+// The "primary" color is the only required color in the map.
+
+$colors: (
+  primary:    #387ef5,
+  secondary:  #32db64,
+  danger:     #f53d3d,
+  light:      #f4f4f4,
+  dark:       #222,
+white:    #ffffff,
+  favorite:   #69BB7B,
+  ASI-Teal:		#16D9CB,
+  ASI-Yellow: #F9CB0B,
+  ASI-Blue:		#4FC3F7,
+  ASI-Red:		#FF7043,
+  ASI-DarkGrey: #B3B3B3,
+  ASI-LightGrey: #EEEEEE
+);
+
+
+// App iOS Variables
+// --------------------------------------------------
+// iOS only Sass variables can go here
+$tabs-ios-tab-icon-color-active: #16D9CB;
+$tabs-ios-tab-text-color-active: #16D9CB;
+$searchbar-ios-background-color: #16D9CB;
+$searchbar-ios-input-placeholder-color: #16D9CB;
+$card-ios-margin-top: 5px;
+$card-ios-margin-bottom: 5px;
+$item-ios-padding-bottom: 0px;
+$popover-ios-width: 90vw;
+
+
+
+// App Material Design Variables
+// --------------------------------------------------
+// Material Design only Sass variables can go here
+$tabs-md-tab-icon-color-active: #16D9CB;
+$tabs-md-tab-text-color-active: #16D9CB;
+$searchbar-md-background-color: #16D9CB;
+$searchbar-md-input-placeholder-color: #16D9CB;
+$card-md-margin-top: 5px;
+$card-md-margin-bottom: 5px;
+$item-md-padding-bottom: 0px;
+$popover-md-width: 90vw;
+
+
+
+// App Windows Variables
+// --------------------------------------------------
+// Windows only Sass variables can go here
+
+
+
+
+// App Theme
+// --------------------------------------------------
+// Ionic apps can have different themes applied, which can
+// then be future customized. This import comes last
+// so that the above variables are used and Ionic's
+// default are overridden.
+
+@import "ionic.theme.default";
+
+
+// Ionicons
+// --------------------------------------------------
+// The premium icon font for Ionic. For more info, please see:
+// http://ionicframework.com/docs/v2/ionicons/
+
+@import "ionic.ionicons";
+
+
+// Fonts
+// --------------------------------------------------
+
+@import "roboto";
+@import "noto-sans";

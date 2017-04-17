@@ -1,0 +1,30 @@
+page-leaderboard {
+	.myRank {
+		height: 100px;
+	}
+
+	ion-item {
+		display: flex;
+		align-items: center;
+	}
+
+	ion-avatar img{
+		object-fit: cover;
+		width: 1vw;
+		height: 1vh;
+	}
+
+	.userInfo {
+		// padding-bottom: 0.8em !important;
+	}
+	.user-points{
+		float:left;
+	}
+	.diff {
+		font-size: 1.3em !important;
+	}
+	ion-note {
+		font-size: 1.5em !important;
+		color: #000000 !important;
+	}
+}

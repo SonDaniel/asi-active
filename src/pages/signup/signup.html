@@ -1,0 +1,176 @@
+<!--
+  Generated template for the Signup page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="ASI-Teal">
+    <ion-title>Sign Up</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+	<ion-item no-line>
+		<ion-avatar>
+			<img *ngIf="imageSrc != ''" [src]="imageSrc" (tap)="openGallery()" class="profilePicture"/>    
+			<img *ngIf="imageSrc == ''" src="assets/img/signup-photo.svg" (tap)="openGallery()" class="profilePicture"/>
+		</ion-avatar>
+	</ion-item>
+	<ion-list>
+		<ion-item>
+			<ion-label stacked>First Name*</ion-label>
+			<ion-input
+			[(ngModel)]="firstname"
+			type="text"
+			class="validate"
+			required>
+			</ion-input>
+		</ion-item>
+
+		<ion-item>
+			<ion-label stacked>Last Name*</ion-label>
+			<ion-input
+			[(ngModel)]="lastname"
+			type="text"
+			class="validate"
+			required>
+			</ion-input>
+		</ion-item>
+
+		<ion-item>
+			<ion-label stacked>Student ID*</ion-label>
+			<ion-input
+			[(ngModel)]="sid"
+			type="number"
+			(blur)="checkValidAndAvailable(sid, 'id')"
+			class="validate"
+			required>
+			</ion-input>
+			<ion-spinner item-right no-margin *ngIf="avalibilityFlags['id'] == 'WAIT'"></ion-spinner>
+			<ion-icon name="ios-close" item-right *ngIf="avalibilityFlags['id'] == 'NOTAVAILABLE' " color="ASI-Red"></ion-icon>
+			<ion-icon name="ios-checkmark" color="secondary" *ngIf="avalibilityFlags['id'] == 'AVAILABLE'" item-right></ion-icon>
+		</ion-item>
+		<div *ngIf="avalibilityFlags['id'] == 'NOTAVAILABLE' " style="color: #FF7043" padding>Student ID is already taken.</div>
+
+		<ion-item>
+			<ion-label stacked>Username*</ion-label>
+			<ion-input
+			[(ngModel)]="username"
+			type="text"
+			(blur)="checkValidAndAvailable(username, 'username')"
+			class="validate"
+			required>
+			</ion-input>
+			<ion-spinner item-right no-margin *ngIf="avalibilityFlags['username'] == 'WAIT' "></ion-spinner>
+			<ion-icon name="ios-close" item-right *ngIf="avalibilityFlags['username'] == 'NOTAVAILABLE' " color="ASI-Red"></ion-icon>
+			<ion-icon name="ios-checkmark" color="secondary" *ngIf="avalibilityFlags['username'] == 'AVAILABLE' " item-right></ion-icon>
+		</ion-item>
+		<div *ngIf="avalibilityFlags['username'] == 'NOTAVAILABLE' " style="color: #FF7043" padding>Username is already taken.</div>
+
+		<ion-item>
+			<ion-label stacked>Email*</ion-label>
+			<ion-input
+			[(ngModel)]="email"
+			type="email"
+			(blur)="checkValidAndAvailable(email, 'email')"
+			class="validate"
+			required>
+			</ion-input>
+			<ion-spinner item-right no-margin *ngIf="avalibilityFlags['email'] == 'WAIT' "></ion-spinner>
+			<ion-icon name="ios-close" item-right *ngIf="avalibilityFlags['email'] == 'NOTAVAILABLE' " color="ASI-Red"></ion-icon>
+			<ion-icon name="ios-checkmark" color="secondary" *ngIf="avalibilityFlags['email'] == 'AVAILABLE'" item-right></ion-icon>
+		</ion-item>
+		<div *ngIf="avalibilityFlags['email'] == 'NOTAVAILABLE' " style="color: #FF7043" padding>email is already taken.</div>
+		<div *ngIf="avalibilityFlags['email'] == 'INVALID' " style="color: #FF7043" padding>email is not valid.</div>
+		<ion-item>
+			<ion-label stacked>Password*</ion-label>
+			<ion-input
+			[ngModel]="password"
+			(ngModelChange)="passwordValidation($event)"
+			type="password"
+			class="validate"
+			required>
+			</ion-input>
+		</ion-item>
+		<ul style="margin-top:30px;">
+			<li *ngIf="passwordFlagLength">Password Should be At least 8 characters long</li>
+			<li *ngIf="passwordFlagNumber">It must have one number</li>
+			<li *ngIf="passwordFlagAlphabet">It must have one alphabet</li>
+			<li>Please Do Not Use Common Passwords i.e "abcd" or "password" etc</li>
+		</ul>
+		<ion-item>
+			<ion-label stacked>Confirm Password*</ion-label>
+			<ion-input
+			[(ngModel)]="confirm_password"
+			type="password"
+			(blur) = "checkConfirmPassword()"
+			class="validate"
+			required>
+			</ion-input>
+		</ion-item>
+		<div *ngIf="confirmPasswordFlag" style="color: #FF7043" padding>Password And Confirm Password Are Not Same.</div>
+		
+
+		<ion-item>
+			<ion-label stacked> Date of Birth</ion-label>
+			<ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="dob"></ion-datetime>
+		</ion-item>
+
+		<ion-item>
+  		<ion-label stacked>Gender</ion-label>
+		  <ion-select [(ngModel)]="gender">
+			<ion-option value="MALE">Man</ion-option>
+ 		    <ion-option value="FEMA">Woman</ion-option>
+ 		    <ion-option value="QUEE">Queer</ion-option>
+ 		    <ion-option value="QTMA">Queer-TransMasculine</ion-option>
+ 		    <ion-option value="QTFE">Queer-TransFeminine</ion-option>
+ 		    <ion-option value="NBIN">Non-Binary</ion-option>
+ 		    <ion-option value="ANON">Prefer not to disclose</ion-option>
+		  </ion-select>
+		</ion-item>
+
+		<ion-item>
+  		<ion-label stacked>Department*</ion-label>
+		  <ion-select [(ngModel)]="dept">
+			<ion-option value=""> --- </ion-option>
+ 		  	<ion-option value="CDC">Isabel Patterson Child Development Center</ion-option>
+ 		  	<ion-option value="BO">Business Office</ion-option>
+ 		  	<ion-option value="HR">Human Resources</ion-option>
+ 		  	<ion-option value="IT">IT</ion-option>
+ 		  	<ion-option value="GOV">Student Government</ion-option>
+ 		  	<ion-option value="BPE">Beach Pride Events</ion-option>
+ 		  	<ion-option value="COM">ASI Communications</ion-option>
+ 		  	<ion-option value="SM">Student Media</ion-option>
+ 		  	<ion-option value="FM">Facilities &amp; Maintenance</ion-option>
+ 		  	<ion-option value="RC">Recycling Center</ion-option>
+ 		  	<ion-option value="UBM">USU - Building Managers</ion-option>
+ 		  	<ion-option value="CE">Conference &amp; Events</ion-option>
+ 		  	<ion-option value="MBP">Maxson &amp; Beach Pantry</ion-option>
+ 		  	<ion-option value="GCI">Games, Candy, Info &amp; Ticket Center</ion-option>
+ 		  	<ion-option value="FIT">SRWC - Fitness</ion-option>
+ 		  	<ion-option value="INT">SRWC - Intramurals</ion-option>
+ 		  	<ion-option value="AQU">SRWC - Aquatics</ion-option>
+ 		  	<ion-option value="MB">SRWC - Membership</ion-option>
+ 		  	<ion-option value="RBB">SRWC - ROA/Beach Balance</ion-option>
+ 		  	<ion-option value="MA">SRWC - Membership &amp; Admin</ion-option>
+ 		  	<ion-option value="SBM">SRWC - Building Managers</ion-option>
+		  </ion-select>
+		</ion-item>
+		
+	</ion-list>
+
+
+	<!-- Error Messages -->
+	<div *ngFor="let error of frontEndError">
+				<p *ngIf="error != '' " class="errorInSignUp">{{error}}</p>
+		</div>
+
+	<!-- Button for sign up -->
+	<div padding>
+		<button ion-button (tap)="signup()" color="ASI-Teal" block>Sign up</button>
+	</div>
+</ion-content>

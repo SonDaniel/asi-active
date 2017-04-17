@@ -1,0 +1,28 @@
+page-signup {
+	$items : 'ion-item';
+	ion-content {
+		background-color: #EEEEEE;
+		ion-item {
+			background-color: #EEEEEE;
+		}
+	}
+	.errorInSignUp{
+		background: #EFE0E0;
+		color: #000000;
+		padding: 5px;
+	}
+	ion-avatar {
+		.profilePicture {
+			object-fit: cover;
+			width: 100px;
+			height: 100px;
+			margin: 0 auto;
+		}
+	}
+	ion-spinner * {
+  width: 1em;
+  height: 1em;
+  stroke: #444;
+  fill: #222;
+}
+}

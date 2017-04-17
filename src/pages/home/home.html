@@ -1,0 +1,82 @@
+<ion-header>
+  <ion-navbar color="ASI-Teal">
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+	<ion-card  color="ASI-Blue">
+		<ion-grid>
+			<ion-row wrap>
+				<ion-col col-12 text-center>
+					<p class="user-greet" style="text-align:center;">
+						{{greetings()}}, {{profile.getFirstName()}}
+					</p>
+				</ion-col>
+			</ion-row>
+
+			<ion-row wrap>
+			<ion-col col-4 no-padding>
+				<ion-item color="ASI-Blue">
+					<ion-avatar item-left class="home-avatar">
+						<img [src]="avatar" cache="false">
+					</ion-avatar>
+				</ion-item>
+			</ion-col>
+
+			<ion-col col-8>
+				<p text-right class="quote">
+					{{quote}}
+				</p>
+			</ion-col>
+			</ion-row>
+	  </ion-grid>
+    </ion-card>
+
+    <ion-card >
+    	<p text-center>
+    		Points Meter
+    	</p>
+	    <canvas #homecanvas id="homecanvas"></canvas>
+	    <div id="showPoints" id="point-text">
+	    	<p>Wellness Points</p> 
+	    	<h2 class="points">{{totalPoints}}</h2>
+	    	<p class="belowTextPoint"> Next reward at: <br/> {{remainingPoints}} Points <br/>
+	    	<ion-icon name="ios-help-circle-outline"></ion-icon>
+	    	</p>
+	    </div>
+	</ion-card>
+
+	<ion-card *ngIf="events.length == 0">
+		<ion-card-header color="white" style="margin: 0 !important; padding: 0 !important;">
+			<ion-grid>
+				<ion-row>
+					<ion-col col-6 text-left style="color: white;">
+						Event
+					</ion-col>
+				</ion-row>
+			</ion-grid>
+		</ion-card-header>
+		<ion-card-content style="padding-top: .5em">
+			<h2 text-center>No current event available.</h2>
+		</ion-card-content>
+	</ion-card>
+	<ion-card *ngFor="let event of events">
+		<ion-card-header color="white" style="margin: 0 !important; padding: 0 !important;">
+			<ion-grid>
+				<ion-row>
+					<ion-col col-6 text-left style="color: white;">
+						Event
+					</ion-col>
+					<ion-col col-6 text-right style="color: white;">
+						{{getDate(event.start)}}
+					</ion-col>
+				</ion-row>
+			</ion-grid>
+		</ion-card-header>
+		<ion-card-content style="padding: 0 !important;" (tap)="getDetails(event)">
+			<img [src]="event.poster" alt="event.name"/>
+		</ion-card-content>
+	</ion-card>
+</ion-content>

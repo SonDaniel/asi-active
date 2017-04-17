@@ -1,0 +1,54 @@
+
+<ion-header>
+  <ion-navbar color="ASI-Teal">
+    <ion-title>Settings</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="outer-content">
+  <ion-list>
+    <ion-list-header>
+      Account
+    </ion-list-header>
+    <ion-item (tap)="editProfile()">
+      Edit Profile
+      <ion-note item-right>
+        <ion-icon name="ios-arrow-forward"></ion-icon>
+      </ion-note>
+    </ion-item>
+    <ion-item (tap)="changePassword()">
+      Change Password
+      <ion-note item-right>
+        <ion-icon name="ios-arrow-forward"></ion-icon>
+      </ion-note>
+    </ion-item>
+    <ion-item (tap)="changeUsername()">
+      Change Username
+      <ion-note item-right>
+        <ion-icon name="ios-arrow-forward"></ion-icon>
+      </ion-note>
+    </ion-item>
+    
+    <ion-list-header>
+    	Support
+    </ion-list-header>
+    <ion-item (tap)="feedback()">
+    	Report a Problem
+      <ion-note item-right>
+        <ion-icon name="ios-arrow-forward"></ion-icon>
+      </ion-note>
+    </ion-item>
+    <ion-item (tap)="faq()">
+    	FAQ
+      <ion-note item-right>
+        <ion-icon name="ios-arrow-forward"></ion-icon>
+      </ion-note>
+    </ion-item>
+    <ion-item>
+    	ASI Active v{{appVersion}}-beta
+    </ion-item>
+
+    <button ion-button full color="ASI-Red" (tap)="logout()" margin-top>Log Out</button>
+    
+  </ion-list>
+</ion-content>

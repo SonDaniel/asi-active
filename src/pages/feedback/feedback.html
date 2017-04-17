@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar color="ASI-Teal">
+    <ion-title>Feedback</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+		<ion-item no-line>
+	   		<ion-label stacked>Feedback</ion-label>
+	   		<ion-textarea cols="25" rows="15"
+		    	[(ngModel)]="message"
+		    	class="validate"
+					[disabled]="disable"
+		    	required style="height:50vh; background-color: white !important">
+		    </ion-textarea>
+		</ion-item>
+	
+	<br/>
+	<div padding>
+		<button ion-button (tap)="sendFeedback()" color="ASI-Teal" [disabled]="disable" block>Send Feedback</button>
+	</div>
+</ion-content>

@@ -1,0 +1,106 @@
+<ion-header>
+  <ion-navbar color="ASI-Teal">
+    <ion-title>{{title}}</ion-title>
+  </ion-navbar>
+  <ion-searchbar
+  [(ngModel)]="searchInput"
+  [showCancelButton]="shouldShowCancel"
+  (ionInput)="filterSearch($event)"
+  (ionFocus)="focused($event)"
+  (ionCancel)="onCancel($event)" placeholder="Search for an Activity">
+</ion-searchbar>
+</ion-header>
+<!-- Code for Regular View -->
+<ion-content (click)="check()">
+  <ion-grid *ngIf="!search && !customFlag">
+    <ion-row *ngFor="let obj of categories">
+      <ion-card (tap)="tapEvent(elem.id, obj.name, obj.points, obj.description)" #elem [id]="obj.id" style="position : relative">
+        <img [src]="getImage(title)" alt="title"/>
+        <span ion-text class="title-text" [color]="getClass(title)">{{obj.name}}</span>
+        <span ion-text class="point-text">{{getPoints(obj.points)}}</span>
+      </ion-card>
+    </ion-row>
+  </ion-grid>
+ <!-- End of Code for Regular View -->
+
+<!-- Code for Custom Category View -->
+  <ion-grid *ngIf="!search && customFlag">
+    <ion-card padding>
+        <img [src]="videoBackground" class="videoImage" (tap)="videoTutorial()"/>
+        <ion-icon name="play" class="playButton" (tap)="videoTutorial()"></ion-icon>
+      <ion-item text-wrap class="description">
+        Custom is where you can log your own activity that is not listed. Just tap the plus button, enter your information and log in your activity!
+        Limited to 3 Custom Activity per day.
+      </ion-item>
+    </ion-card>
+
+    <ion-card>
+    <ion-card-header style="background-color: #16D9CB" no-padding>
+      <div style="padding-right: 2vw; text-align: right !important; height: 100%">
+        <button ion-button [color]="edit ? 'ASI-Red' : 'light'" clear small right (tap)="editButton(edit, editList)" *ngIf="customDataLength !== 0" icon-only>
+          <ion-icon [name]="edit ? 'md-checkmark' : 'md-create'" style="padding: 0 auto" [color]="edit ? 'ASI-Red': 'light'"></ion-icon>
+        </button>
+        <button ion-button small icon-only clear (tap)="addCustom()" *ngIf="customFlag && !edit" color="light">
+          <ion-icon name="md-add" style="padding: 0 auto"></ion-icon>
+        </button>
+        <button ion-button color="ASI-Red" clear small *ngIf="edit" (tap)="cancelEdit()" icon-only>
+          <ion-icon name="md-close" style="padding: 0 auto"></ion-icon>
+        </button>
+      </div>
+    </ion-card-header>
+    <ion-list no-lines *ngIf="customDataLength !== 0" padding>
+      <ion-item *ngFor="let data of customData" #elem [id]="data.id" style="min-height: 0">
+        <p style="text-overflow: ellipsis !important; margin: 0; padding-top: 2px" item-left>- {{data.name}}</p>
+        <ion-icon color="ASI-Red" name="close" style="font-weight: bold; margin: 0" (tap)="queueDeleteActivity(data.id)" item-right *ngIf="edit"></ion-icon>
+      </ion-item>
+    </ion-list>
+
+      <button ion-button block [color]="getClass(title)" (tap)="logCustomActivity()" class="button" *ngIf="customDataLength !== 0" [disabled]="disabled" no-margin> Check-In for 1 point</button>
+      <div *ngIf="disabled && customDataLength !== 0 && message" style="color:#FF7043"> Daily point limit of 16 reached. <br/> Current points at: {{totalPointsToday}}</div>
+    </ion-card>
+  </ion-grid>
+<!-- End of Code for Custom Category View -->
+
+<!-- Code for Event View-->
+  <ion-grid *ngIf="!search && eventsFlag">
+    <ion-row *ngFor="let obj of eventData">
+      <ion-card class="card" (tap)="tapForEvents(obj)" #elem [id]="obj.category_id">
+        <img [src]="getImage(title)" alt="title"/>
+        <span ion-text class="title-text" [color]="getClass(title)">{{obj.name}}</span>
+        <span ion-text class="point-text">{{getPoints(obj.points)}}</span>
+      </ion-card>
+    </ion-row>
+    <ion-row *ngIf="eventLength == 0">
+      <ion-card text-center color="ASI-Red" padding>
+        No Events Currently Available
+      </ion-card>
+    </ion-row>
+  </ion-grid>
+<!--End of Code for Event View-->
+
+<!-- Code for Search View -->
+  <ion-list *ngIf="search">
+    <ion-item *ngFor="let data of allData" class="item" (tap)="changeView(data)">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-2 class="category" [style.color]="getColor(data.section)">
+            {{data.category}}
+          </ion-col>
+          
+          <ion-col offset-3 col-3 text-right>
+            <ion-badge class="section" color="{{getClass(data.section)}}">
+              {{ data.section }}
+            </ion-badge>
+          </ion-col>
+          
+          <ion-col col-1 class="point" [style.color]="getColor(data.section)">
+            {{data.points}} PT
+          </ion-col>  
+        </ion-row>
+      </ion-grid>
+    
+    
+    </ion-item>
+  </ion-list>
+  <!-- End of Code for Search View -->
+</ion-content>

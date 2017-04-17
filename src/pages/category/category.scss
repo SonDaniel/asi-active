@@ -1,0 +1,112 @@
+page-category {
+	ion-content {
+		background-color: #EEEEEE !important;
+	}
+
+	ion-card {
+		position : relative !important;
+		.title-text {
+			position : absolute; 
+			top: 35%;
+			left: 2%;
+			font-size: 1.2em;
+			width: 100%;
+			font-weight: bold;
+			color: #fff;
+		}
+		.point-text {
+			position : absolute;
+			top: 35%;
+			right: 5%;
+			color : white;
+			font-weight :bold;
+		}
+	}
+  
+  ion-grid {
+	padding: 0 !important;
+	ion-row {
+		padding: 0 !important;
+		margin: 0 !important;
+	}
+  }
+	.item {
+		padding: 0;
+	}
+	.category {
+		font-size: 0.8em;
+	}
+	.section {
+		font-size: 0.5em;
+		color: white !important;
+		text-align: right;
+	}
+	.point {
+		font-size: 0.8em;
+	}
+
+	.button {
+		font-weight: bold;
+		padding-right: 5px !important;
+		padding-left: 5px !important;
+	}
+
+	.description {
+		font-size: 1em;
+		text-align: center;
+	}
+
+	.activity {
+		font-size: 1em;
+	}
+	.activity:first-child {
+		padding-top: 0.1em;
+	}
+	.activity:last-child {
+		padding-bottom: 0.1em;
+	}
+	.line {
+		max-height: 1em !important;
+		max-width: 80vw;
+		border-bottom: 0.3vh solid #4D4D4D;
+		padding-bottom: 0.4em;
+		margin-left: 5vw;
+		margin-right: 5vw;
+		text-align: center;
+	}
+  .detailImage {
+  	position: relative;
+  	background: #ffffff url("./assets/img/custom_details.png") center no-repeat;
+  	background-size: cover;
+  	height: 26vh;
+  }
+
+	.titleTop {
+		position: absolute;
+		top: 0.5%;
+		padding-left: 2%;
+		font-size: 1.2em;
+		font-weight: bold;
+		color: #fff;
+	}
+	.titleBottom {
+		position: absolute;
+		bottom: 0;
+		padding: 0 0 1% 0;
+		font-size: 1.2em;
+		font-weight: bold;
+		color: #fff;
+	}
+	.videoImage {
+		position: relative;
+	}
+
+	.playButton {
+		position: absolute;
+		top: 35%;
+		left : 50%;
+		transform: translate(-50%, -50%);
+		font-size: 7em;
+		color: white;
+	}
+}

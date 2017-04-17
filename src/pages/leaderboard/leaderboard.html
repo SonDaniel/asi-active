@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-navbar no-border-bottom color="ASI-Teal">
+    <ion-title>
+      Leaderboard
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+	<ion-card color="ASI-Teal" padding text-center><div *ngIf="!dataExists">{{errorMessage}} </div>The leaderboard is updated everyday at 5:00AM PT</ion-card>
+	<ion-list *ngIf="dataExists" no-lines>
+		<div *ngFor="let student of students">
+		<ion-item>
+			<h2 item-left>
+				{{student.rank}}
+			</h2>
+			<ion-avatar item-left>
+				<img [src]="student.avatar"/>
+			</ion-avatar>
+
+			<h2 style="overflow: hidden; text-overflow: ellipsis;" (tap)="swapName(student)">{{student.display}}</h2>
+			<p> {{getDepartment(student.dept)}} </p>
+			
+			<ion-icon name={{student.icon}} color={{student.cls}} item-right >
+				<span *ngIf="student.diff != 'NR'">{{student.diff}}</span>
+			</ion-icon>
+			<ion-note item-right>
+				{{student.points}}
+			</ion-note>
+		</ion-item>
+		</div>
+	</ion-list>
+	<ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+		<ion-infinite-scroll-content
+			loadingSpinner="bubbles"
+			loadingText="Loading more data..."></ion-infinite-scroll-content>
+	</ion-infinite-scroll>
+</ion-content>

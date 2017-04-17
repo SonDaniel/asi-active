@@ -1,0 +1,116 @@
+<ion-header>
+  <ion-toolbar color="ASI-Teal">
+    <ion-title>
+      Edit Profile
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span ion-text color="primary" showWhen="ios">Cancel</span>
+        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button ion-button (click)="save()">
+        <span ion-text color="primary" >Save</span>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item no-line>
+    <ion-avatar item-center padding>
+      <img [src]="avatar" on-tap="openGallery()" class="profilePic"/>  
+    </ion-avatar>
+  </ion-item>
+
+  <ion-list>
+  <ion-item>
+    <ion-label color="ASI-Teal" fixed>First Name:</ion-label>
+      <ion-input 
+        [ngModel]="user.user.first_name"
+        (ngModelChange)="user.user.first_name = $event"
+        type="text"
+        class="validate"
+        required text-right>
+      </ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label color="ASI-Teal" fixed>Last Name:</ion-label>
+      <ion-input 
+        [ngModel]="user.user.last_name"
+        (ngModelChange)="user.user.last_name = $event"
+        type="text"
+        class="validate"
+        required text-right>
+      </ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label color="ASI-Teal" fixed>Student ID:</ion-label>
+      <ion-input 
+        [ngModel]="user.id"
+        (ngModelChange)="user.id = $event"
+        type="number"
+        class="validate"
+        required text-right>
+      </ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label color="ASI-Teal" fixed>Email:</ion-label>
+      <ion-input 
+        [ngModel]="user.user.email"
+        (ngModelChange)="user.user.email = $event"
+        type="text"
+        class="validate"
+        required>
+      </ion-input>
+  </ion-item>
+
+  <ion-item class="Signup">
+    <ion-label color="ASI-Teal"> Date of Birth</ion-label>
+    <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="user.dob" (ngModelChange)="user.dob = $event"></ion-datetime>
+  </ion-item>
+
+  <ion-item class="Signup">
+    <ion-label color="ASI-Teal">Gender</ion-label>
+    <ion-select [(ngModel)]="user.gender" (ngModelChange)="user.gender = $event">
+    <ion-option value="MALE">Man</ion-option>
+      <ion-option value="FEMA">Woman</ion-option>
+      <ion-option value="QUEE">Queer</ion-option>
+      <ion-option value="QTMA">Queer-TransMasculine</ion-option>
+      <ion-option value="QTFE">Queer-TransFeminine</ion-option>
+      <ion-option value="NBIN">Non-Binary</ion-option>
+      <ion-option value="ANON">Prefer not to disclose</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item class="Signup">
+    <ion-label color="ASI-Teal">Department</ion-label>
+    <ion-select [(ngModel)]="user.dept" (ngModelChange)="user.dept = $event">
+      <ion-option value=""> --- </ion-option>
+      <ion-option value="CDC">Isabel Patterson Child Development Center</ion-option>
+      <ion-option value="BO">Business Office</ion-option>
+      <ion-option value="HR">Human Resources</ion-option>
+      <ion-option value="IT">IT</ion-option>
+      <ion-option value="GOV">Student Government</ion-option>
+      <ion-option value="BPE">Beach Pride Events</ion-option>
+      <ion-option value="COM">ASI Communications</ion-option>
+      <ion-option value="SM">Student Media</ion-option>
+      <ion-option value="FM">Facilities &amp; Maintenance</ion-option>
+      <ion-option value="RC">Recycling Center</ion-option>
+      <ion-option value="UBM">USU - Building Managers</ion-option>
+      <ion-option value="CE">Conference &amp; Events</ion-option>
+      <ion-option value="MBP">Maxson &amp; Beach Pantry</ion-option>
+      <ion-option value="GCI">Games, Candy, Info &amp; Ticket Center</ion-option>
+      <ion-option value="FIT">SRWC - Fitness</ion-option>
+      <ion-option value="INT">SRWC - Intramurals</ion-option>
+      <ion-option value="AQU">SRWC - Aquatics</ion-option>
+      <ion-option value="MB">SRWC - Membership</ion-option>
+      <ion-option value="RBB">SRWC - ROA/Beach Balance</ion-option>
+      <ion-option value="MA">SRWC - Membership &amp; Admin</ion-option>
+      <ion-option value="SBM">SRWC - Building Managers</ion-option>
+    </ion-select>
+  </ion-item>
+    
+  </ion-list>
+</ion-content>

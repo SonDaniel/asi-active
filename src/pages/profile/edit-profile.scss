@@ -1,0 +1,13 @@
+edit-profile {
+	ion-content {
+		background-color: #EEEEEE !important;
+	}
+	ion-avatar {
+		.profilePic {
+			object-fit: cover;
+			width: 100px;
+			height: 100px;
+			margin: 0 auto;
+		}
+	}
+}

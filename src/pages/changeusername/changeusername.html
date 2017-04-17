@@ -1,0 +1,31 @@
+<ion-header>
+
+  <ion-navbar color="ASI-Teal">
+    <ion-title>Username</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-item>
+    <ion-label stacked> Current</ion-label>
+    <ion-input type="text" value="{{username}}" disabled="true"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label stacked>New</ion-label>
+    <ion-input
+    [(ngModel)]="newUsername"
+    type="text"
+    (blur)="validate(newUsername)"
+    class="validate"
+    required>
+    </ion-input>
+    <ion-spinner item-right no-margin *ngIf="usernameWait"></ion-spinner>
+    <ion-icon name="ios-close" item-right *ngIf="!usernameWait && usernameUnavailable" color="ASI-Red"></ion-icon>
+    <ion-icon name="ios-checkmark" color="secondary" *ngIf="!usernameWait && usernameAvailable" item-right></ion-icon>
+  </ion-item>
+  <div *ngIf="usernameUnavailable" style="color: #FF7043" padding>Username is already taken.</div>
+
+  <button ion-button block color="ASI-Teal" [disabled]="!usernameAvailable" (tap)="submit()">Save</button>
+</ion-content>

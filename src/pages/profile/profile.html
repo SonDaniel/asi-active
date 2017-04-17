@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-toolbar color="ASI-Teal">
+    <ion-title>Profile</ion-title>
+    <ion-buttons end>
+      <button ion-button color="gray" (tap)="settings()">
+      edit
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content>
+  <ion-card class="profileCard">
+    <ion-grid class="profileCard">
+      <ion-row center>
+        <ion-col col-6 no-padding>
+          <ion-item no-lines no-padding class="profileCard">
+            <ion-grid no-padding class="profileCard">
+              <ion-row>
+                <ion-col col-12 center>
+                  <ion-avatar center>
+                    <img [src]="profile.getAvatarUrl()" class="profilePicture">
+                  </ion-avatar>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col col-12 class="name">
+                  <p style="color: white; text-overflow: ellipsis;">{{profile.getFullName()}}</p>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col col-6 class="department">
+                <p style="color: white; text-overflow: ellipsis;">{{profile.getDepartment()}}</p>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item>
+        </ion-col>
+
+        <ion-col col-6 right>
+          <ion-grid style="line-height: 150%">
+            <ion-row style="padding: 0 !important">
+              <ion-col text-right>
+                <p style="color: white"><span class="points">{{totalPoints}}</span> PTS</p>
+                <p style="font-size: 1.3em; color: white" *ngIf="rankAvailable">
+                  rank <span style="font-size: 1.5em">{{rank}}</span><br/> 
+                  with {{rankPoints}}<span style="font-size: 0.7em"> PTS</span>
+                </p>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
+  <ion-card>
+  <ion-card-header>
+    <h2 text-center>Activity</h2>
+  </ion-card-header>
+  <ion-card-content>
+    <canvas id="activityChart"></canvas>
+    <div style="text-align: center">
+      <button ion-button small block text-center (tap)="seeMore()" color="ASI-Red" style="align-items: center"> View All Logs</button>
+    </div>
+</ion-card-content>
+</ion-card>
+</ion-content>

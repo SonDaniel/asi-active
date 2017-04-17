@@ -1,0 +1,57 @@
+activity {
+	ion-content {
+		background-color: #EEEEEE !important;
+	}
+	ion-card {
+		width: 100%;
+		background-size: 100%;
+    position: relative;
+    text-align: center;
+  }
+  
+  ion-grid {
+  	padding: 0 !important;
+  }
+
+  ion-row {
+  	padding: 0 !important;
+  	margin: 0 !important;
+  }
+
+	.card {
+		background-size: 100%;
+		background-repeat: no-repeat;
+		background-position: center center;
+	}
+	.item {
+		padding: 0;
+	}
+	.category {
+		font-size: 0.8em;
+	}
+	.section {
+		font-size: 0.5em;
+		color: white !important;
+		text-align: right;
+	}
+	.point {
+		font-size: 0.8em;
+	}
+
+	.text {
+    position: absolute;
+    top: 30%;
+    font-size: 1.8em;
+    width: 100%;
+    font-weight: bold;
+    color: #fff;
+	}
+	.help {
+	position: absolute;
+    top: 8%;
+	right: 3%;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #fff;
+	}
+}

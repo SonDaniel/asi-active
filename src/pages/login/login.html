@@ -1,0 +1,39 @@
+<ion-content padding text-center>
+	<ion-img src="assets/img/asiactive_logo.png" style="margin: 0 auto;" alt="'ASI Active logo'"> </ion-img>
+	<ion-list>
+	  <ion-item>
+	    <ion-label fixed>Username</ion-label>
+	    <ion-input [(ngModel)]="username" type="text" value=""></ion-input>
+	  </ion-item>
+
+	  <ion-item>
+	    <ion-label fixed>Password</ion-label>
+	    <ion-input [(ngModel)]="password" type="password"></ion-input>
+	  </ion-item>
+	</ion-list>
+
+	<!-- Sign in Button -->
+	<ion-row>
+		<ion-col text-right>
+			<button ion-button block (tap)="login()" color="ASI-Teal">Sign in</button>
+		</ion-col>
+	</ion-row>
+	<div *ngIf="errorMessage != '' ">
+				<p *ngIf="errorMessage != '' " class="errorLogin">{{errorMessage}}</p>
+		</div>
+	<ion-grid>
+		<ion-row>
+			<ion-col col-4>
+				<div (tap)="signup()" text-left>
+					New User?
+				</div>
+			</ion-col>
+			<ion-col col-8>
+				<div (tap)="forgotpassword()" text-right>
+					Forgot Password?
+				</div>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+	<ion-note text-center>ASI Active v{{appVersion}}-beta</ion-note>
+</ion-content>

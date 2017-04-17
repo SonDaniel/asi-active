@@ -1,0 +1,61 @@
+page-details {
+	ion-content {
+		background-color: #EEEEEE !important;
+	}
+	.descriptionBox {
+		padding-left: 1em;
+		padding-right: 1em;
+	}
+	.image { 
+		background-size: 100% !important;
+	}
+
+	ion-card {
+		padding: 0.5em;
+	}
+
+	ion-item {
+		padding: 0;
+	}
+	.topTitle {
+    position: absolute;
+    font-size: 0.7em;
+    width: 100%;
+    top: 8%;
+    font-weight: bold;
+    color: #fff;
+	}
+	.bottomTitle {
+    position: absolute;
+    font-size: 1.0em;
+    width: 100%;
+    bottom: 3%;
+    font-weight: bold;
+    color: #fff;
+	}
+	.button {
+		color: #fff;
+		font-weight: bold;
+	}
+
+	.activityList {
+		padding: 0 15px;
+		color: #4D4D4D !important;
+
+	}
+
+	.line {
+		max-height: 1em !important;
+		max-width: 80vw;
+		border-bottom: 0.2vh solid #4D4D4D;
+		padding-bottom: 0.4em;
+		margin-left: 5vw;
+		margin-right: 5vw;
+	}
+	.activityList:first-child {
+		padding-top: 0.4em;
+	}
+	.activityList:last-child {
+		padding-bottom: 0.4em;
+	}
+}

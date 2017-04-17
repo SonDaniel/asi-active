@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-navbar color="ASI-Teal">
+    <ion-title>Activities</ion-title>
+  </ion-navbar>
+  <ion-searchbar
+  [(ngModel)]="searchInput"
+  [showCancelButton]="shouldShowCancel"
+  (ionInput)="filterSearch($event)"
+  (ionCancel)="onCancel($event)"
+  (ionFocus)="focused($event)"
+  (ionBlur)="unfocused($event)" placeholder="Search for an Activity">
+</ion-searchbar>
+</ion-header>
+
+<ion-content (click)="check()">
+  <ion-grid *ngIf="!search">
+    <ion-row *ngFor="let loc of locations">
+      <ion-card class="card" #elem [id]="loc.id">
+        <img [src]="getImage(loc.name)" (tap)="tapEvent(elem.id, loc.name)" alt="loc.name"/>
+        <div class="help" *ngIf="loc.description"><ion-icon ion-button clear small name="ios-help-circle-outline" (tap)="presentPopover($event, loc.description)" no-margin no-padding color="light"> </ion-icon></div>
+        <div class="text" (tap)="tapEvent(elem.id, loc.name)" >{{loc.name}}</div>
+      </ion-card>
+    </ion-row>
+  </ion-grid>
+
+  <ion-list *ngIf="search">
+    <ion-item *ngFor="let data of searchData | async" class="item" (tap)="changeView(data)">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-2 class="category" [style.color]="getColor(data.section)">
+            {{data.category}}
+          </ion-col>
+          
+          <ion-col offset-4 col-3 text-right>
+            <ion-badge class="section" color="{{getClass(data.section)}}">
+              {{ data.section }}
+            </ion-badge>
+          </ion-col>
+          
+          <ion-col col-1 class="point" [style.color]="getColor(data.section)">
+            {{getPoints(data.points)}}
+          </ion-col>  
+        </ion-row>
+      </ion-grid>
+    
+    
+    </ion-item>
+  </ion-list>
+</ion-content>

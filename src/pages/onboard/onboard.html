@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar color="white">
+    <ion-buttons end>
+      <button ion-button color="ASI-Teal" (tap)="skip($event)" *ngIf="!slides.isEnd()">Skip</button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-slides pager>
+    <ion-slide *ngFor="let data of viewData" padding>
+      <img [src]="data.image" [alt]="data.alt"/>
+      <h3>{{data.description}}</h3>
+      <button ion-button color="ASI-Teal" small style="width: 25vw" (tap)="button($event)">{{data.buttonTitle}}</button>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

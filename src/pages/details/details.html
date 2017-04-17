@@ -1,0 +1,59 @@
+<ion-header>
+
+  <ion-navbar color="ASI-Teal">
+    <ion-title>{{title}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+	<ion-card *ngIf="!events">
+		<ion-item>
+			<img [src]="'assets/img/' + title + '_details.png'" [style.background]="getBackground()" class="image" [alt]="title"/>
+			<div>
+				<ion-grid>
+					<ion-row>
+							<ion-col col-3 class="topTitle"> {{locationName}} </ion-col>
+						</ion-row>
+						<ion-row>
+							<ion-col offset-8 col-1 class="bottomTitle">{{getPoints(points)}}</ion-col>
+					</ion-row>
+				</ion-grid>
+			</div>
+		</ion-item>
+		<div text-wrap class="descriptionBox">
+			<p style="color: #4D4D4D !important;" text-center> {{description}} </p>
+		</div>
+		<div class="line"></div>
+		<ion-list no-lines>
+			<div *ngFor="let data of dataObject" #elem [id]="data.id" class="activityList">
+				- {{data.name}}
+			</div>
+		</ion-list>
+		<div style="padding-right: 1em; padding-left: 1em;">
+		<button ion-button block [color]="getColor()" (tap)="logActivity()" class="button" [disabled]="disabled"> Check-In for {{points}} points</button>
+		</div>
+		<p *ngIf="disabled && message" text-center ion-text color="ASI-Red"> Daily point limit of 16 reached. <br/> Current points at: {{totalPointsToday}}</p>
+	</ion-card>
+
+<!-- Card for events -->
+	<ion-card *ngIf="events">
+		<ion-item>
+			<img [src]="eventData.poster" class="image" alt="eventData.name"/>
+		</ion-item>
+		<div text-wrap class="descriptionBox">
+			<p style="color: #4D4D4D !important;" text-left> Location: {{eventData.location}} </p>
+			<p style="color: #4D4D4D !important;" text-left> Start: {{start}} </p>
+			<p style="color: #4D4D4D !important;" text-left> End: {{end}} </p>
+		</div>
+		<div class="line"></div>
+		<div text-wrap class="descriptionBox">
+			<p style="color: #4D4D4D !important;" text-center> {{eventData.description}} </p>
+		</div>
+		<div style="padding-right: 1em; padding-left: 1em;">
+			<button ion-button block [color]="getColor()" (tap)="logEvent(eventData.id)" class="button" [disabled]="eventDisabled"> Check-In for {{eventData.points}} points</button>
+		</div>
+	</ion-card>
+<!--End of code for Event-->
+</ion-content>
